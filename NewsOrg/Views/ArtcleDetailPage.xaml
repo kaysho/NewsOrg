@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" Title="{Binding Title}" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="NewsOrg.Views.ArtcleDetailPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="SaveArticle_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0,50,0,0" Padding="10" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <ffimageloading:CachedImage
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="200"
+                HeightRequest="200"
+                Aspect="AspectFill"
+                DownsampleToViewSize="true"
+                Source = "{Binding Article.UrlToImage}">
+		</ffimageloading:CachedImage>
+            
+
+            <Label Text="{Binding Article.Title}" FontSize="Title"/>
+
+            <Label Text="{Binding Article.Author}" FontSize="Caption"/>
+
+            <Label Text="{Binding Article.Content}" FontSize="Body"/>
+
+        </StackLayout>
+        </ScrollView>
+            
+    </ContentPage.Content>
+</ContentPage>

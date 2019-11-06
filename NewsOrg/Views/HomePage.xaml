@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" Title="{Binding Title}" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="NewsOrg.Views.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+        <ListView x:Name="ArtclesListView" ItemsSource="{Binding Articles}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding LoadArticlesCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Vertical">
+                            <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+			                    WidthRequest="200" HeightRequest="200"
+                                                        Aspect="AspectFill"
+			                    DownsampleToViewSize="true"
+			                    Source = "{Binding UrlToImage}">
+		</ffimageloading:CachedImage>
+
+                            <Label x:Name="ArticleTitle" Text="{Binding Title}" FontSize="Title"/>
+
+                            <Label Text="{Binding Author}"/>
+
+                            <Label Text="{Binding Description}" FontSize="Caption"/>
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
